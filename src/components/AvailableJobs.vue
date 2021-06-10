@@ -1,12 +1,23 @@
 <template>
-  <div class="container">
-    <img :src="imgLinkNew" alt="" />
+  <div class="container" :class="{ 'new-border': isFeatured }">
+    <img :src="imgLinkNew" alt="Company Logo" />
+
+    <h2 class="company-name">{{ company }}</h2>
+
+    <new-badge v-if="isNew"></new-badge>
+
+    <featured-badge v-if="isFeatured"></featured-badge>
+
+    <h2 class="position">{{ position }}</h2>
   </div>
 </template>
 
 <script>
+import NewBadge from "./badges/NewBadge.vue";
+import FeaturedBadge from "./badges/FeaturedBadge.vue";
 export default {
-  props: ["logo"],
+  components: { NewBadge, FeaturedBadge },
+  props: ["logo", "company", "isNew", "isFeatured", "position"],
   data() {
     return {
       imgLinkNew: require(`../assets/${this.logo}`),
@@ -21,6 +32,15 @@ export default {
     width: 80%;
     height: 100%;
     background-color: #fff;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 0.3rem;
+  }
+  .new-border {
+    border-left: 3px solid #5ba4a4;
+  }
+  .company-name {
+    color: #5ba4a4;
   }
 }
 </style>
