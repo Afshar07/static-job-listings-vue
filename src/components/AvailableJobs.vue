@@ -1,27 +1,29 @@
 <template>
-  <div class="job-container" :class="featuredClass">
-    <img :src="imgLinkNew" alt="Company Logo" class="company-logo" />
+  <transition name="slide" appear>
+    <div class="job-container" :class="featuredClass">
+      <img :src="imgLinkNew" alt="Company Logo" class="company-logo" />
 
-    <div class="names-badges">
-      <h3 class="company-name">{{ company }}</h3>
+      <div class="names-badges">
+        <h3 class="company-name">{{ company }}</h3>
 
-      <new-badge v-if="isNew"></new-badge>
+        <new-badge v-if="isNew"></new-badge>
 
-      <featured-badge v-if="isFeatured"></featured-badge>
+        <featured-badge v-if="isFeatured"></featured-badge>
+      </div>
+      <h4 class="position">{{ position }}</h4>
+
+      <job-description :description="jobDescription"></job-description>
+
+      <hr />
+      <div class="filter-badges">
+        <filter-badge
+          v-for="filter in filterBadge"
+          :key="filter"
+          :filter="filter"
+        ></filter-badge>
+      </div>
     </div>
-    <h4 class="position">{{ position }}</h4>
-
-    <job-description :description="jobDescription"></job-description>
-
-    <hr />
-    <div class="filter-badges">
-      <filter-badge
-        v-for="filter in filterBadge"
-        :key="filter"
-        :filter="filter"
-      ></filter-badge>
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -109,6 +111,17 @@ export default {
   .filter-badges {
     display: flex;
     flex-wrap: wrap;
+  }
+  .slide-enter-from {
+    opacity: 0;
+    transform: translateX(-500px);
+  }
+  .slide-enter-to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .slide-enter-active {
+    transition: all 0.5s ease-in-out;
   }
 }
 </style>
