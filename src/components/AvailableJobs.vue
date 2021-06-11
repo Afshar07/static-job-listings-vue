@@ -10,11 +10,13 @@
 
         <featured-badge v-if="isFeatured"></featured-badge>
       </div>
+
       <h4 class="position">{{ position }}</h4>
 
       <job-description :description="jobDescription"></job-description>
 
       <hr />
+
       <div class="filter-badges">
         <filter-badge
           v-for="filter in filterBadge"
