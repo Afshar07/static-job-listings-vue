@@ -7,6 +7,15 @@
       :id="data.id"
       :company="data.company"
       :logo="data.logo"
+      :isNew="data.new"
+      :isFeatured="data.featured"
+      :position="data.position"
+      :role="data.role"
+      :postedTime="data.postedAt"
+      :contract="data.contract"
+      :location="data.location"
+      :languages="data.languages"
+      :tools="data.tools"
     ></available-jobs>
   </div>
 </template>
@@ -25,10 +34,12 @@ export default {
 };
 </script>
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap");
 html,
 body {
   margin: 0;
   padding: 0;
+  font-family: "Spartan", sans-serif !important;
 }
 .container {
   background-color: #effafa;
