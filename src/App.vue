@@ -1,5 +1,6 @@
 <template>
   <the-header></the-header>
+  <filter-box :filtered="filterArray"></filter-box>
   <div class="container">
     <available-jobs
       v-for="data in allData"
@@ -17,6 +18,7 @@
       :location="data.location"
       :languages="data.languages"
       :tools="data.tools"
+      @filterItems="addFilterDataToArray"
     ></available-jobs>
   </div>
 </template>
@@ -24,14 +26,40 @@
 <script>
 import TheHeader from "./components/views/TheHeader.vue";
 import AvailableJobs from "./components/AvailableJobs.vue";
-import data from "./data.json";
+import FilterBox from "./components/views/FilterBox.vue";
+import Data from "./data.json";
 export default {
   data() {
     return {
-      allData: data,
+      allData: Object.assign(Data),
+      filterArray: [],
     };
   },
-  components: { TheHeader, AvailableJobs },
+  components: { TheHeader, AvailableJobs, FilterBox },
+  methods: {
+    addFilterDataToArray(value) {
+      // Add all filters to filerArray
+      if (!this.filterArray.includes(value)) {
+        this.filterArray.push(value);
+        this.newFilteredData(value);
+      }
+      console.log(this.filterArray);
+    },
+
+    newFilteredData(value) {
+      let filtered = this.allData.filter((jobs) => {
+        const filterableItems = [
+          ...jobs.languages,
+          ...jobs.tools,
+          jobs.level,
+          jobs.role,
+        ];
+
+        return filterableItems.includes(value);
+      });
+      this.allData = filtered;
+    },
+  },
 };
 </script>
 <style>
@@ -46,6 +74,7 @@ body {
 <style scoped>
 .container {
   background-color: #effafa;
+  min-height: 100vh;
   height: 100%;
   display: flex;
   flex-direction: column;
