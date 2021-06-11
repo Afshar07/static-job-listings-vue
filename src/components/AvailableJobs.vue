@@ -70,9 +70,13 @@ export default {
     padding: 1rem;
     border-radius: 0.3rem;
     position: relative;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
   }
-  .container:first-of-type {
+  .job-container:first-of-type {
     margin-top: 4rem;
+  }
+  .job-container:last-of-type {
+    margin-bottom: 4rem;
   }
   .company-logo {
     position: absolute;
