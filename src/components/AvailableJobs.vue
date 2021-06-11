@@ -2,7 +2,7 @@
   <div class="job-container" :class="featuredClass">
     <img :src="imgLinkNew" alt="Company Logo" class="company-logo" />
 
-    <div class="badges">
+    <div class="names-badges">
       <h3 class="company-name">{{ company }}</h3>
 
       <new-badge v-if="isNew"></new-badge>
@@ -83,10 +83,10 @@ export default {
   .new-border {
     border-left: 3px solid #5ba4a4;
   }
-  .badges {
+  .names-badges {
     display: flex;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
   .company-name {
     color: #5ba4a4;
