@@ -11,11 +11,7 @@
     </div>
     <h4 class="position">{{ position }}</h4>
 
-    <job-description
-      v-for="description in jobDescription"
-      :key="description"
-      :desc="description"
-    ></job-description>
+    <job-description :description="jobDescription"></job-description>
 
     <hr />
     <filter-badge
@@ -83,11 +79,10 @@ export default {
   .new-border {
     border-left: 3px solid #5ba4a4;
   }
-  .badges{
+  .badges {
     display: flex;
     align-items: center;
     margin-top: 2rem;
-
   }
   .company-name {
     color: #5ba4a4;
@@ -95,10 +90,11 @@ export default {
   .position {
     font-size: 1rem;
     color: #2c3a3a;
+    margin-top: 0;
   }
   hr {
     border: none;
-    width: 90%;
+    width: 97%;
     border-bottom: 2px solid rgba(44, 58, 58, 0.1);
   }
 }
