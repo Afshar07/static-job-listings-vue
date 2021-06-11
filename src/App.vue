@@ -41,6 +41,8 @@ body {
   padding: 0;
   font-family: "Spartan", sans-serif !important;
 }
+</style>
+<style scoped>
 .container {
   background-color: #effafa;
   height: 100%;
