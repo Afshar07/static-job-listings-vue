@@ -10,6 +10,7 @@
       :isNew="data.new"
       :isFeatured="data.featured"
       :position="data.position"
+      :level="data.level"
       :role="data.role"
       :postedTime="data.postedAt"
       :contract="data.contract"
