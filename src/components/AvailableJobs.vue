@@ -19,9 +19,11 @@
 
       <div class="filter-badges">
         <filter-badge
+          :isRemovable="isFilterRemovable"
           v-for="filter in filterBadge"
           :key="filter"
           :filter="filter"
+          @click="filterData(filter)"
         ></filter-badge>
       </div>
     </div>
@@ -49,11 +51,26 @@ export default {
     "languages",
     "tools",
   ],
+  methods: {
+    // Get the filtered values from FilterBadge component
+    filterData(value) {
+      this.$emit("filterItems", value);
+    },
+    filterDataNew(value) {
+      console.log(value);
+    },
+  },
+  emits: ["filterItems"],
   data() {
     return {
+      // Manage image adress for webpack
       imgLinkNew: require(`../assets/${this.logo}`),
+      // add all filters for every job
       filterBadge: [this.role, this.level, ...this.languages, ...this.tools],
+      // Add description for every job
       jobDescription: [this.postedTime, this.contract, this.location],
+
+      isFilterRemovable: false,
     };
   },
   computed: {
