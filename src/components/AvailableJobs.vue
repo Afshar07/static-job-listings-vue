@@ -1,5 +1,5 @@
 <template>
-  <div class="container" :class="{ 'new-border': isFeatured }">
+  <div class="container" :class="featuredClass">
     <img :src="imgLinkNew" alt="Company Logo" />
 
     <h2 class="company-name">{{ company }}</h2>
@@ -10,11 +10,11 @@
 
     <h4 class="position">{{ position }}</h4>
 
-    <ul class="desc">
-      <li>{{ postedTime }}</li>
-      <li>{{ contract }}</li>
-      <li>{{ location }}</li>
-    </ul>
+    <job-description
+      v-for="description in jobDescription"
+      :key="description"
+      :desc="description"
+    ></job-description>
 
     <hr />
     <filter-badge
@@ -29,8 +29,9 @@
 import NewBadge from "./badges/NewBadge.vue";
 import FeaturedBadge from "./badges/FeaturedBadge.vue";
 import FilterBadge from "./badges/FilterBadge.vue";
+import jobDescription from "./views/JobDescription.vue";
 export default {
-  components: { NewBadge, FeaturedBadge, FilterBadge },
+  components: { NewBadge, FeaturedBadge, FilterBadge, jobDescription },
   props: [
     "logo",
     "company",
@@ -48,7 +49,13 @@ export default {
     return {
       imgLinkNew: require(`../assets/${this.logo}`),
       filterBadge: [...this.languages, ...this.tools, this.role, this.position],
+      jobDescription: [this.postedTime, this.contract, this.location],
     };
+  },
+  computed: {
+    featuredClass() {
+      return this.isFeatured ? "new-border" : "";
+    },
   },
 };
 </script>
