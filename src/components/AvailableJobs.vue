@@ -14,11 +14,13 @@
     <job-description :description="jobDescription"></job-description>
 
     <hr />
-    <filter-badge
-      v-for="filter in filterBadge"
-      :key="filter"
-      :filter="filter"
-    ></filter-badge>
+    <div class="filter-badges">
+      <filter-badge
+        v-for="filter in filterBadge"
+        :key="filter"
+        :filter="filter"
+      ></filter-badge>
+    </div>
   </div>
 </template>
 
@@ -35,6 +37,7 @@ export default {
     "isNew",
     "isFeatured",
     "position",
+    "level",
     "role",
     "postedTime",
     "contract",
@@ -45,7 +48,7 @@ export default {
   data() {
     return {
       imgLinkNew: require(`../assets/${this.logo}`),
-      filterBadge: [...this.languages, ...this.tools, this.role, this.position],
+      filterBadge: [this.role, this.level, ...this.languages, ...this.tools],
       jobDescription: [this.postedTime, this.contract, this.location],
     };
   },
@@ -75,6 +78,7 @@ export default {
     position: absolute;
     top: -2.5rem;
     left: 1.5rem;
+    transform: scale(0.8);
   }
   .new-border {
     border-left: 3px solid #5ba4a4;
@@ -96,6 +100,10 @@ export default {
     border: none;
     width: 97%;
     border-bottom: 2px solid rgba(44, 58, 58, 0.1);
+  }
+  .filter-badges {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 </style>
