@@ -1,13 +1,14 @@
 <template>
-  <div class="container" :class="featuredClass">
-    <img :src="imgLinkNew" alt="Company Logo" />
+  <div class="job-container" :class="featuredClass">
+    <img :src="imgLinkNew" alt="Company Logo" class="company-logo" />
 
-    <h2 class="company-name">{{ company }}</h2>
+    <div class="badges">
+      <h3 class="company-name">{{ company }}</h3>
 
-    <new-badge v-if="isNew"></new-badge>
+      <new-badge v-if="isNew"></new-badge>
 
-    <featured-badge v-if="isFeatured"></featured-badge>
-
+      <featured-badge v-if="isFeatured"></featured-badge>
+    </div>
     <h4 class="position">{{ position }}</h4>
 
     <job-description
@@ -62,16 +63,31 @@ export default {
 
 <style scoped>
 @media only screen and (max-width: 500px) {
-  .container {
+  .job-container {
     width: 80%;
     height: 100%;
-    background-color: #fff;
-    margin: 1rem;
+    background-color: #fff !important;
+    margin: 2.5rem 1rem 1rem 1rem;
     padding: 1rem;
     border-radius: 0.3rem;
+    position: relative;
+  }
+  .container:first-of-type {
+    margin-top: 4rem;
+  }
+  .company-logo {
+    position: absolute;
+    top: -2.5rem;
+    left: 1.5rem;
   }
   .new-border {
     border-left: 3px solid #5ba4a4;
+  }
+  .badges{
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+
   }
   .company-name {
     color: #5ba4a4;
