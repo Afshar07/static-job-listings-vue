@@ -9,7 +9,7 @@
   height: auto;
   background-color: #5ba4a4;
   border-radius: 20px;
-  margin-left: .9rem;
+  margin-left: 0.9rem;
 }
 p {
   color: #fff;
