@@ -8,19 +8,46 @@
 
     <featured-badge v-if="isFeatured"></featured-badge>
 
-    <h2 class="position">{{ position }}</h2>
+    <h4 class="position">{{ position }}</h4>
+
+    <ul class="desc">
+      <li>{{ postedTime }}</li>
+      <li>{{ contract }}</li>
+      <li>{{ location }}</li>
+    </ul>
+
+    <hr />
+    <filter-badge
+      v-for="filter in filterBadge"
+      :key="filter"
+      :filter="filter"
+    ></filter-badge>
   </div>
 </template>
 
 <script>
 import NewBadge from "./badges/NewBadge.vue";
 import FeaturedBadge from "./badges/FeaturedBadge.vue";
+import FilterBadge from "./badges/FilterBadge.vue";
 export default {
-  components: { NewBadge, FeaturedBadge },
-  props: ["logo", "company", "isNew", "isFeatured", "position"],
+  components: { NewBadge, FeaturedBadge, FilterBadge },
+  props: [
+    "logo",
+    "company",
+    "isNew",
+    "isFeatured",
+    "position",
+    "role",
+    "postedTime",
+    "contract",
+    "location",
+    "languages",
+    "tools",
+  ],
   data() {
     return {
       imgLinkNew: require(`../assets/${this.logo}`),
+      filterBadge: [...this.languages, ...this.tools, this.role, this.position],
     };
   },
 };
@@ -41,6 +68,15 @@ export default {
   }
   .company-name {
     color: #5ba4a4;
+  }
+  .position {
+    font-size: 1rem;
+    color: #2c3a3a;
+  }
+  hr {
+    border: none;
+    width: 90%;
+    border-bottom: 2px solid rgba(44, 58, 58, 0.1);
   }
 }
 </style>
