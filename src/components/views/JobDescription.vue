@@ -18,6 +18,7 @@ export default {
 .description-container {
   color: #7b8e8e;
   display: flex;
+  flex-wrap: wrap;
   padding: 0;
 }
 .job-desc {

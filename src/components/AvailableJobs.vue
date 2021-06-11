@@ -89,6 +89,7 @@ export default {
   }
   .names-badges {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     margin-top: 1rem;
   }
