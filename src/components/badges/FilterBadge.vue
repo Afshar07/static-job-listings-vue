@@ -2,7 +2,12 @@
   <div class="badge-container">
     <p class="badge-text">{{ filter }}</p>
     <div class="remove" v-if="isRemovable">
-      <img :src="removeIcon" alt="remove Icon" class="remove-icon" />
+      <img
+        :src="removeIcon"
+        alt="remove Icon"
+        class="remove-icon"
+        @click="removeFilter"
+      />
     </div>
   </div>
 </template>
@@ -10,11 +15,16 @@
 <script>
 export default {
   props: ["filter", "isRemovable"],
-  emits: ["filtered"],
+  emits: ["remove-filter"],
   data() {
     return {
       removeIcon: require("../../assets/icon-remove.svg"),
     };
+  },
+  methods: {
+    removeFilter() {
+      this.$emit("remove-filter", this.filter);
+    },
   },
 };
 </script>
