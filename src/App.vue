@@ -1,7 +1,11 @@
 <template>
   <the-header></the-header>
-  <filter-box :filtered="filterArgs" @remove-filter="removeFilter"></filter-box>
   <transition-group tag="div" class="container" name="slide" appear>
+    <filter-box
+      :filtered="filterArgs"
+      @remove-filter="removeFilter"
+      v-if="showFilterBox"
+    ></filter-box>
     <available-jobs
       v-for="data in allData"
       :key="data.id"
@@ -38,6 +42,17 @@ export default {
 
   components: { TheHeader, AvailableJobs, FilterBox },
 
+  computed: {
+    showFilterBox() {
+      // Manage v-if on filterBox
+      if (this.filterArgs.length == 0) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+  },
+
   methods: {
     addFilterDataToArray(value) {
       // Add all fJOB FINDERilters to filerArray if not already exist
@@ -46,7 +61,7 @@ export default {
       }
       this.isIncludeFilter();
     },
-     isIncludeFilter() {
+    isIncludeFilter() {
       // Check the data and see if it includes any of filterArgs
       const result = Data.filter((job) => {
         let filterableItems = [
@@ -85,39 +100,46 @@ body {
 }
 </style>
 <style scoped>
-.container {
-  background-color: #effafa;
-  min-height: 100vh;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.slide-enter-from {
-  opacity: 0;
-  transform: translateX(-500px);
-}
-.slide-enter-to {
-  opacity: 1;
-  transform: translateX(0);
-}
-.slide-enter-active {
-  transition: all 0.5s ease-in-out;
-}
-.slide-leave-from {
-  opacity: 1;
-  transform: translateX(0);
-}
-.slide-leave-to {
-  opacity: 0;
-  transform: translateX(500px);
-}
-.slide-leave-active {
-  transition: all 0.5s ease-in-out;
-  position: absolute;
-}
-.slide-move {
-  transition: all 0.5s ease;
+@media only screen and (max-width: 500px) {
+  body {
+    display: flex;
+    justify-content: center;
+    background-color: #effafa;
+  }
+  .container {
+    background-color: #effafa;
+    min-height: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .slide-enter-from {
+    opacity: 0;
+    transform: translateX(-500px);
+  }
+  .slide-enter-to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .slide-enter-active {
+    transition: all 0.5s ease-in-out;
+  }
+  .slide-leave-from {
+    opacity: 1;
+    transform: translateX(0) translateX(0);
+  }
+  .slide-leave-to {
+    opacity: 0;
+    transform: translateX(500px) translateY(0);
+  }
+  .slide-leave-active {
+    transition: all 0.5s ease-in-out;
+    position: absolute;
+  }
+  .slide-move {
+    transition: all 0.5s ease;
+  }
 }
 </style>
