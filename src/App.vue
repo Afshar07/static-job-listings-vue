@@ -44,11 +44,9 @@ export default {
       if (!this.filterArgs.includes(value)) {
         this.filterArgs.push(value);
       }
-      this.filterArgs.every(() => {
-        this.isIncludeFilter();
-      });
+      this.isIncludeFilter();
     },
-    isIncludeFilter() {
+     isIncludeFilter() {
       // Check the data and see if it includes any of filterArgs
       const result = Data.filter((job) => {
         let filterableItems = [
