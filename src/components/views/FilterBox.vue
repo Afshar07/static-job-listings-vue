@@ -1,6 +1,5 @@
 <template>
   <div class="filterbox">
-    <!-- <div class="spacer"></div> -->
     <div class="badges">
       <filter-badge
         :isRemovable="isFilterRemovable"
@@ -10,7 +9,7 @@
         @remove-filter="removeFilter"
       ></filter-badge>
     </div>
-    <button class="clear-btn">Clear</button>
+    <button class="clear-btn" @click.prevent="clearFilter">Clear</button>
   </div>
 </template>
 
@@ -18,7 +17,7 @@
 import FilterBadge from "../badges/FilterBadge.vue";
 export default {
   components: { FilterBadge },
-  emits: ["remove-filter"],
+  emits: ["remove-filter", "clear-filter"],
   props: ["filtered"],
   data() {
     return {
@@ -28,6 +27,9 @@ export default {
   methods: {
     removeFilter(value) {
       this.$emit("remove-filter", value);
+    },
+    clearFilter() {
+      this.$emit("clear-filter");
     },
   },
 };
@@ -53,7 +55,7 @@ export default {
   .clear-btn {
     background: none;
     border: none;
-    color: #5ba4a4;
+    color: #7b8e8e;
     font-weight: 700;
     font-size: 0.9rem;
   }
