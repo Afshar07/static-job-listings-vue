@@ -1,5 +1,4 @@
 <template>
-  <transition name="slide" appear>
     <div class="job-container" :class="featuredClass">
       <img :src="imgLinkNew" alt="Company Logo" class="company-logo" />
 
@@ -27,7 +26,6 @@
         ></filter-badge>
       </div>
     </div>
-  </transition>
 </template>
 
 <script>
@@ -130,17 +128,6 @@ export default {
   .filter-badges {
     display: flex;
     flex-wrap: wrap;
-  }
-  .slide-enter-from {
-    opacity: 0;
-    transform: translateX(-500px);
-  }
-  .slide-enter-to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  .slide-enter-active {
-    transition: all 0.5s ease-in-out;
   }
 }
 </style>
