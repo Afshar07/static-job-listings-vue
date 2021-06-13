@@ -1,7 +1,7 @@
 <template>
   <the-header></the-header>
   <filter-box :filtered="filterArgs" @remove-filter="removeFilter"></filter-box>
-  <div class="container">
+  <transition-group tag="div" class="container" name="slide" appear>
     <available-jobs
       v-for="data in allData"
       :key="data.id"
@@ -20,7 +20,7 @@
       :tools="data.tools"
       @filterItems="addFilterDataToArray"
     ></available-jobs>
-  </div>
+  </transition-group>
 </template>
 
 <script>
@@ -95,5 +95,31 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(-500px);
+}
+.slide-enter-to {
+  opacity: 1;
+  transform: translateX(0);
+}
+.slide-enter-active {
+  transition: all 0.5s ease-in-out;
+}
+.slide-leave-from {
+  opacity: 1;
+  transform: translateX(0);
+}
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(500px);
+}
+.slide-leave-active {
+  transition: all 0.5s ease-in-out;
+  position: absolute;
+}
+.slide-move {
+  transition: transform 0.5s ease;
 }
 </style>
