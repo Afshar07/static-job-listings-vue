@@ -120,6 +120,6 @@ body {
   position: absolute;
 }
 .slide-move {
-  transition: transform 0.5s ease;
+  transition: all 0.5s ease;
 }
 </style>
