@@ -2,12 +2,7 @@
   <div class="badge-container">
     <p class="badge-text">{{ filter }}</p>
     <div class="remove" v-if="isRemovable">
-      <img
-        :src="removeIcon"
-        alt="remove Icon"
-        class="remove-icon"
-        @click="removeFilter"
-      />
+      <img :src="removeIcon" alt="remove Icon" @click="removeFilter" />
     </div>
   </div>
 </template>
