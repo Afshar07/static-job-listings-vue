@@ -4,6 +4,7 @@
     <filter-box
       :filtered="filterArgs"
       @remove-filter="removeFilter"
+      @clear-filter="clearFilter"
       v-if="showFilterBox"
     ></filter-box>
     <available-jobs
@@ -87,6 +88,10 @@ export default {
         this.isIncludeFilter();
       }
     },
+    clearFilter() {
+      this.filterArgs = [];
+      this.allData = Data;
+    },
   },
 };
 </script>
@@ -108,7 +113,7 @@ body {
   }
   .container {
     background-color: #effafa;
-    min-height: 100%;
+    min-height: 80vh;
     height: 100%;
     display: flex;
     flex-direction: column;
