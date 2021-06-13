@@ -33,7 +33,6 @@ export default {
     return {
       allData: Object.assign(Data),
       filterArgs: [],
-      searchInThese: [],
     };
   },
 
@@ -45,11 +44,12 @@ export default {
       if (!this.filterArgs.includes(value)) {
         this.filterArgs.push(value);
       }
-      this.filterArgs.every((each) => {
-        this.isIncludeFilter(each);
+      this.filterArgs.every(() => {
+        this.isIncludeFilter();
       });
     },
     isIncludeFilter() {
+      // Check the data and see if it includes any of filterArgs
       const result = Data.filter((job) => {
         let filterableItems = [
           ...job.languages,
@@ -65,6 +65,7 @@ export default {
     },
 
     removeFilter(value) {
+      // Remove the filter from filterArgs and check the rest of filters in isIncludeFilter
       const index = this.filterArgs.indexOf(value);
       this.filterArgs.splice(index, 1);
       if (this.filterArgs.length === 0) {
