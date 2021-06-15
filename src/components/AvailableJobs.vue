@@ -20,6 +20,7 @@
     <div class="filter-badges">
       <filter-badge
         :isRemovable="isFilterRemovable"
+        :isFilterBox="isFilterBox"
         v-for="filter in filterBadge"
         :key="filter"
         :filter="filter"
@@ -70,6 +71,7 @@ export default {
       jobDescription: [this.postedTime, this.contract, this.location],
 
       isFilterRemovable: false,
+      isFilterBox: false,
     };
   },
   computed: {
