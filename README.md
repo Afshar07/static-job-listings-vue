@@ -1,6 +1,6 @@
 # Responsive component-based static job listing made with VueJs
 
-![Design Preview for static job listing landing page](./src/assets/design/desktop-preview.jpg)
+![Design Preview for static job listing landing page](./src/design/desktop-preview.jpg)
 ### Live Preview
 See [Live Preview](http://static-job-listings-vue.vercel.app/).
 
