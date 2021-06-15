@@ -1,7 +1,8 @@
 <template>
-    <div class="job-container" :class="featuredClass">
-      <img :src="imgLinkNew" alt="Company Logo" class="company-logo" />
+  <div class="job-container" :class="featuredClass">
+    <img :src="imgLinkNew" alt="Company Logo" class="company-logo" />
 
+    <div class="details">
       <div class="names-badges">
         <h3 class="company-name">{{ company }}</h3>
 
@@ -13,19 +14,19 @@
       <h4 class="position">{{ position }}</h4>
 
       <job-description :description="jobDescription"></job-description>
-
-      <hr />
-
-      <div class="filter-badges">
-        <filter-badge
-          :isRemovable="isFilterRemovable"
-          v-for="filter in filterBadge"
-          :key="filter"
-          :filter="filter"
-          @click="filterData(filter)"
-        ></filter-badge>
-      </div>
     </div>
+    <hr />
+
+    <div class="filter-badges">
+      <filter-badge
+        :isRemovable="isFilterRemovable"
+        v-for="filter in filterBadge"
+        :key="filter"
+        :filter="filter"
+        @click="filterData(filter)"
+      ></filter-badge>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -80,6 +81,9 @@ export default {
 </script>
 
 <style scoped>
+.company-name {
+  color: #5ba4a4;
+}
 @media only screen and (max-width: 500px) {
   .job-container {
     width: 80%;
@@ -112,9 +116,7 @@ export default {
     align-items: center;
     margin-top: 1rem;
   }
-  .company-name {
-    color: #5ba4a4;
-  }
+
   .position {
     font-size: 1rem;
     color: #2c3a3a;
@@ -128,6 +130,49 @@ export default {
   .filter-badges {
     display: flex;
     flex-wrap: wrap;
+  }
+}
+@media only screen and (min-width: 501px) {
+  .job-container {
+    width: 80%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    margin: 1rem 1rem 1rem 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0px 10px 15px -5px rgba(0, 0, 0, 0.1);
+  }
+  .job-container:first-of-type {
+    margin-top: 5rem;
+  }
+  .job-container:last-of-type {
+    margin-bottom: 5rem;
+  }
+  .company-logo {
+    margin: 1rem;
+  }
+  .new-border {
+    border-left: 5px solid #5ba4a4;
+  }
+  .names-badges {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+  .position {
+    margin: 0;
+  }
+  hr {
+    display: none;
+  }
+  .filter-badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: flex-end !important;
+    margin-left: auto;
   }
 }
 </style>
