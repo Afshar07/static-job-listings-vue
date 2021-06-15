@@ -105,21 +105,6 @@ body {
 }
 </style>
 <style scoped>
-@media only screen and (max-width: 500px) {
-  body {
-    display: flex;
-    justify-content: center;
-    background-color: #effafa;
-  }
-  .container {
-    background-color: #effafa;
-    min-height: 80vh;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
   .slide-enter-from {
     opacity: 0;
     transform: translateX(-500px);
@@ -145,6 +130,31 @@ body {
   }
   .slide-move {
     transition: all 0.5s ease;
+  }
+@media only screen and (max-width: 500px) {
+  body {
+    display: flex;
+    justify-content: center;
+    background-color: #effafa;
+  }
+  .container {
+    background-color: #effafa;
+    min-height: 80vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media only screen and (min-width: 501px) {
+  .container {
+    background-color: #effafa;
+    min-height: 80vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 </style>
